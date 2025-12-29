@@ -1,7 +1,8 @@
 # Steam Machine – Command Summary
 
 This file contains a minimal, command-only summary of the Steam Machine setup.
-All commands are listed exactly as they appear in README.md.
+All commands are listed exactly as they appear in [README.md](README.md)
+
 
 ---
 
