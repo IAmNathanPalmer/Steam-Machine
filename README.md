@@ -10,6 +10,7 @@ My preference is Debian. SteamOS itself is restricted, is now based on Arch Linu
 
 ## Table of Contents
 
+- [Summary (summary.md)](summary.md)
 - [Debian CLI Steam Console Setup](#debian-cli-steam-console-setup)
   - [1. Install Debian](#1-install-debian)
   - [2. Update system](#2-update-system)
