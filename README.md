@@ -179,6 +179,7 @@ Now enter ```sudo crontab -e``` which will open your editor (Nano). Add the foll
 ```
 0 7 * * * /usr/local/sbin/update.sh >> /var/log/update.log 2>&1
 ```
+This signals that the script runs at 7:00 each morning and [can be adjusted](https://crontab.guru/#0_7_*_*_*) accordingly.
 
 (Control+O and Control+X to save and exit again).
 
@@ -187,9 +188,9 @@ Now enter ```sudo crontab -e``` which will open your editor (Nano). Add the foll
 
 Some multiplayer games require [kernel-level anticheat software.](https://levvvel.com/games-with-kernel-level-anti-cheat-software/) These programs run with full system privileges, giving them deep access to your system, running with the same privileged access as the kernel itself. This is a security issue, and these anticheat programs are fundamentally incompatible with Linux by design.
 
-This is a **game developer decision**, not a limitation of Steam, Proton, or Linux. Linux supports userspace anticheat, and many games already work correctly when developers choose to enable it. Proton allows you to run games designed for Windows, and a vast majority of them will work, just as they do on the Steam Deck and will on the Steam Machine. However, popular titles like Call of Duty, Apex Legends, and others that use kernel-level anticheat simply will not be able to run. Tools like Easy Anti-Cheat (EAC) and BattlEye do have Linux support and can function with Proton when developers opt in. However, support is optional per-game. Other ones like Riot’s Vanguard, EA’s Javelin, Activision’s Ricochet, and others give elevated privileges, not allowing them to work with Linux.
+This is a **game developer decision**, not a limitation of Steam, Proton, or Linux. Linux supports userspace anticheat. A vast majority of games will work, just as they do on the Steam Deck and will on the Steam Machine. However, popular titles which use kernel-level anticheat simply will not be able to run. Tools like *Easy Anti-Cheat* (EAC) and *BattlEye* do have Linux support and can function with Proton when developers opt in. However, support is optional per-game at the developer's discretion. Other ones like Riot’s *Vanguard*, EA’s *Javelin*, Activision’s *Ricochet*, and others require elevated privileges, disallowing them from working on Linux systems.
 
-I strongly recommend not trying to work around this and not trying to allow kernel-level access to your system. In my opinion, people shouldn't be embracing kernel-level anticheat at all. Aside from it basically being a rootkit, it allows the developers to blame the players while not actually solving anything. Allowing kernel-level access introduces serious security risks and does not meaningfully solve cheating problems. I recommend just avoiding the games that require this level of access to your system.
+I strongly recommend not trying to work around this and not trying to allow kernel-level access to your system. In my opinion, people shouldn't embrace kernel-level anticheat at all. Aside from it basically being a rootkit, it allows the developers to blame the players while not actually solving anything.
 
 ---
 
