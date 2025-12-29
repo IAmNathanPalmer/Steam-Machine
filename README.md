@@ -168,9 +168,7 @@ Now enter ```sudo crontab -e``` which will open your editor (Nano). Add the foll
 
 Some multiplayer games require [kernel-level anticheat software.](https://levvvel.com/games-with-kernel-level-anti-cheat-software/) These programs run with full system privileges, giving them deep access to your system, running with the same privileged access as the kernel itself. This is a security issue, and these anticheat programs are fundamentally incompatible with Linux by design.
 
-This is a **game developer decision**, not a limitation of Steam, Proton, or Linux. Linux supports userspace anticheat, and many games already work correctly when developers choose to enable it. Proton allows you to run games designed for Windows, and a vast majority of them will work, just as they do on the Steam Deck and will on the Steam Machine. However, popular titles like Call of Duty, Apex Legends, and others that use kernel-level anticheat simply will not be able to run.
-
-Tools like Easy Anti-Cheat (EAC) and BattlEye do have Linux support and can function with Proton when developers opt in. However, support is optional per-game. Other ones like Riot’s Vanguard, EA’s Javelin, Activision’s Ricochet, and others give elevated privileges and simply will not run on a Linux system, regardless of Steam or Proton. 
+This is a **game developer decision**, not a limitation of Steam, Proton, or Linux. Linux supports userspace anticheat, and many games already work correctly when developers choose to enable it. Proton allows you to run games designed for Windows, and a vast majority of them will work, just as they do on the Steam Deck and will on the Steam Machine. However, popular titles like Call of Duty, Apex Legends, and others that use kernel-level anticheat simply will not be able to run. Tools like Easy Anti-Cheat (EAC) and BattlEye do have Linux support and can function with Proton when developers opt in. However, support is optional per-game. Other ones like Riot’s Vanguard, EA’s Javelin, Activision’s Ricochet, and others give elevated privileges, not allowing them to work with Linux.
 
 I strongly recommend not trying to work around this and not trying to allow kernel-level access to your system. In my opinion, people shouldn't be embracing kernel-level anticheat at all. Aside from it basically being a rootkit, it allows the developers to blame the players while not actually solving anything. Allowing kernel-level access introduces serious security risks and does not meaningfully solve cheating problems. I recommend just avoiding the games that require this level of access to your system.
 
@@ -179,11 +177,13 @@ I strongly recommend not trying to work around this and not trying to allow kern
 ## 11. Notes
 - This seems like work but most of it is just typing and entering or saving info
 - This is **only done once** and this will result in a stable Steam Linux gaming system that will just start and run
-- You can also add MangoHub or Gamescope if you're comfortable with these CLI tools. I left them out as they don't add much benefit in my opinion
+- If Steam Big Picture doesn’t start automatically -> check ```systemctl status launch.service```
+- If updates didn’t run -> check /var/log/update.log
 - You can use another distro to do this including Fedora, etc. but Debian is stable and predictable
 - Steam Input handles native controller support (Xbox, Playstation, Nintendo Switch), games launched through Steam need no extra support
+- If your controller isn’t recognized -> verify Steam Input is enabled
 - There are gaming distros but those are desktop PC systems, this allows you to set up your own gaming-specific system
-- I also have a Plex media server that is exactly this but with Plex instead of Steam. The system barely uses resources and allows maximum uptime
+- I also have a Plex media server that is exactly this but with Plex instead of Steam. This setup barely uses resources and allows maximum uptime
 - If you do need to shut down entering ```sudo shutdown -r now``` will restart and ```sudo shutdown -h now``` will shut it off
 - If you're worried about using a new system with command line, they are well documented and can always be looked up
 - After completing this, you now have a system that uses nearly the same stack as valve and behaves like SteamOS under the hood.
