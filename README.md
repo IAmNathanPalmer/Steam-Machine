@@ -1,5 +1,5 @@
 # Steam Machine
-Build your own Steam machine: a lightweight setup that boots straight into Steam Big Picture. Desktop optional, no bloat, just a non-Steam-branded machine with your hardware of choice. With Valve reviving the Steam Machine concept, this guide documents a clean, minimal way to build your own today.
+Create your own Steam machine: a lightweight setup that boots straight into Steam Big Picture. Desktop optional, no bloat, just a non-Steam-branded machine with your hardware of choice. With Valve reviving the Steam Machine concept, this guide documents a clean, minimal way to build your own today.
 
 ---
 
@@ -7,6 +7,24 @@ Build your own Steam machine: a lightweight setup that boots straight into Steam
 Almost two months ago Valve announced their Steam Machine, essentially a mid-sized PC with moderate hardware. Many people wonder about future capabilities and better hardware, costs, etc. However, it is more or less a software configuration which anyone can set up themselves, and I had already been planning to do this even before the announcement. This is nothing against Valve; it's for those who want to use what is basically the same software stack that Steam uses on a different hardware configuration. The costs for an actual Steam Machine haven't been confirmed yet, and anyone who already has the hardware can set it up without buying another system.
 
 My preference is Debian. SteamOS itself is restricted, is now based on Arch Linux and does not have a general installer. You could use other Linux distributions for this as well, but for this I chose [Debian net install](https://www.debian.org/CD/netinst/) because of its conservative updates, it is lightweight, predictable without surprises, and an excellent base for long-running systems. This will turn whatever hardware into a **stable** gaming appliance. There are several commands and some scripts, it may look intimidating for someone who doesn't work with command-line but you do this once and you're set. This system will boot straight to Big Picture mode, and you can use that in place of a desktop.
+
+## Table of Contents
+
+- [Debian CLI Steam Console Setup](#debian-cli-steam-console-setup)
+  - [1. Install Debian](#1-install-debian)
+  - [2. Update system](#2-update-system)
+  - [3. Install GPU drivers](#3-install-gpu-drivers)
+    - [Intel/AMD (Mesa)](#intelamd-mesa)
+    - [NVIDIA](#nvidia)
+  - [4. Install Xorg + LightDM](#4-install-xorg--lightdm)
+  - [5. Install Steam + Proton](#5-install-steam--proton)
+  - [6. Optional: Lightweight Desktop (fallback)](#6-optional-lightweight-desktop-fallback)
+  - [7. Create Steam Big Picture Startup Script](#7-create-steam-big-picture-startup-script)
+  - [8. Create systemd Service](#8-create-systemd-service)
+  - [9. Daily Automated Update (Recommended)](#9-daily-automated-update-recommended)
+  - [10. Multiplayer Titles & Kernel Anticheat](#10-multiplayer-titles--kernel-anticheat)
+- [11. Notes](#11-notes)
+
 
 # Debian CLI Steam console setup
 
@@ -133,7 +151,7 @@ sudo systemctl enable launch.service
 
 ---
 
-## 9. Daily automated update (Optional)
+## 9. Daily automated update (Recommended)
 
 This system is now designed to behave like a console. A daily scheduled update keeps drivers, firmware, and security fixes current without user intervention. Updates apply quietly; kernel or driver changes take effect on the next reboot. These will not force a restart.
 
@@ -164,7 +182,7 @@ Now enter ```sudo crontab -e``` which will open your editor (Nano). Add the foll
 (Control+O and Control+X to save and exit again).
 
 ---
-## Multiplayer titles & kernel anticheat
+## 10. Multiplayer titles & kernel anticheat
 
 Some multiplayer games require [kernel-level anticheat software.](https://levvvel.com/games-with-kernel-level-anti-cheat-software/) These programs run with full system privileges, giving them deep access to your system, running with the same privileged access as the kernel itself. This is a security issue, and these anticheat programs are fundamentally incompatible with Linux by design.
 
@@ -176,7 +194,7 @@ I strongly recommend not trying to work around this and not trying to allow kern
 
 ## 11. Notes
 - This seems like work but most of it is just typing and entering or saving info
-- This is **only done once** and this will result in a stable Steam Linux gaming system that will just start and run
+- This is **only done once** and this will result in a stable Steam gaming system that uses nearly the same stack as Valve and behaves like SteamOS under the hood
 - If Steam Big Picture doesn’t start automatically -> check ```systemctl status launch.service```
 - If updates didn’t run -> check /var/log/update.log
 - You can use another distro to do this including Fedora, etc. but Debian is stable and predictable
@@ -186,6 +204,5 @@ I strongly recommend not trying to work around this and not trying to allow kern
 - I also have a Plex media server that is exactly this but with Plex instead of Steam. This setup barely uses resources and allows maximum uptime
 - If you do need to shut down entering ```sudo shutdown -r now``` will restart and ```sudo shutdown -h now``` will shut it off
 - If you're worried about using a new system with command line, they are well documented and can always be looked up
-- After completing this, you now have a system that uses nearly the same stack as valve and behaves like SteamOS under the hood.
 
 
